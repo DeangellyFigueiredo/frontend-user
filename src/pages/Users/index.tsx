@@ -5,7 +5,7 @@ import {useModal} from '../../shared/hooks/useModal';
 import {columns} from './table/columns';
 import {deleteUser, findManyUsers} from '../../services/paciente';
 import {useRefresh} from '../../shared/hooks/useRefresh';
-import {UserProps} from '../../models/paciente';
+import {UserProps} from '../../models/user';
 import {TableGrid} from './table/TableGrid';
 import {useToken} from '../../shared/hooks/auth';
 import {CreateUser} from './createUser';
@@ -15,13 +15,6 @@ export function Users() {
   const {actionToast} = useToast();
   const {setOpen, setIdObject} = useModal();
   const {User_Access} = useToken();
-  const colunas = [
-    {column: 'Nome', value: 'Nome'},
-    {column: 'Sobrenome', value: 'Sobrenome'},
-    {column: 'Email', value: 'Email'},
-    {column: 'Nível de Acesso', value: 'Nível de Acesso'},
-    {column: 'Status', value: 'Status'},
-  ];
 
   const {count} = useRefresh();
   useEffect(() => {
@@ -76,7 +69,6 @@ export function Users() {
           title="Usuários"
           captionButton="Novo Usuário"
           onCreate={handleCreateUser}
-          column={colunas}
         />
       )}
       <TableGrid

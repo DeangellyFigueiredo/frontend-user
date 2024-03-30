@@ -19,7 +19,7 @@ export function TableGrid(props: TableGridProps) {
   const actionColumn: GridColDef[] = [
     {
       field: 'menu',
-      headerName: '',
+      headerName: 'Ações',
       type: 'string',
       align: 'right',
       disableColumnMenu: false,

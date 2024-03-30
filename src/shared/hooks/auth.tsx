@@ -21,6 +21,7 @@ export enum EAccessLevel {
 interface TokenProviderProps {
   children: ReactNode;
 }
+
 const TokenContext = createContext<TokenContextData>({} as TokenContextData);
 
 export function TokenProvider({children}: TokenProviderProps) {
@@ -36,8 +37,6 @@ export function TokenProvider({children}: TokenProviderProps) {
       if (token) {
         return await authToken(token)
           .then(async response => {
-            console.log(response.data);
-            console.log(EAccessLevel[response.data.decodedToken.sub.role]);
             setUser_Access(EAccessLevel[response.data.decodedToken.sub.role]);
             await validation();
             setPermission(true);
@@ -52,7 +51,6 @@ export function TokenProvider({children}: TokenProviderProps) {
   }
 
   window.onload = async function () {
-    console.log('onload');
     await UserValidation();
   };
 
