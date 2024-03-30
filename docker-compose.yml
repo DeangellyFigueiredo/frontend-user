@@ -1,0 +1,10 @@
+version: "3.5"
+services:
+  frontend-user:
+    image: frontend-user
+    container_name: frontend-user
+    restart: unless-stopped
+    ports:
+      - "7777:80"
+    
+
