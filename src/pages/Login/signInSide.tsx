@@ -43,6 +43,7 @@ export default function SignInSide() {
   const onSubmit = (data: FormData) => handleLogin(data);
 
   const handleLogin = async (data: yup.InferType<typeof schema>) => {
+    console.log('logandooo');
     try {
       await Login(data);
     } catch (error: any) {

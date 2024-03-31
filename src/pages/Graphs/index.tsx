@@ -71,8 +71,8 @@ export function Graphs() {
     if (graphData.length === 0) return;
     const svg = d3
       .select(svgRef.current)
-      .attr('width', 1000)
-      .attr('height', 800);
+      .attr('width', window.innerWidth - 100)
+      .attr('height', window.innerHeight - 100);
 
     const margin = {top: 20, right: 30, bottom: 30, left: 40};
     const width = 400 - margin.left - margin.right;
@@ -156,11 +156,27 @@ export function Graphs() {
       <Box
         sx={{
           width: '100%',
-          height: '100vh',
+          height: '50vh',
           typography: 'body1',
           paddingTop: '24px',
+          justifyContent: 'center',
+          display: 'flex',
         }}>
         {graphData.length > 0 && <svg ref={svgRef}></svg>}
+        {roleSelected === '' && (
+          <Box
+            sx={{
+              width: '100%',
+              height: '100%',
+              typography: 'body1',
+              paddingTop: '24px',
+              alignItems: 'center',
+              justifyContent: 'center',
+              display: 'flex',
+            }}>
+            <Typography>Não há dados para exibir no gráfico</Typography>
+          </Box>
+        )}
       </Box>
     </>
   );

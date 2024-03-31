@@ -10,7 +10,6 @@ import {RefreshProvider} from './shared/hooks/useRefresh';
 import {ToastProvider} from './shared/hooks/useToast';
 import {LightTheme} from './shared/themes';
 import {TokenProvider} from './shared/hooks/auth';
-import {SignRoutes} from './routes/signIn.routes';
 
 export function App() {
   return (

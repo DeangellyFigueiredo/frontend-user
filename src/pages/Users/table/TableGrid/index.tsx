@@ -5,6 +5,7 @@ import {DataGrid, GridColDef} from '@mui/x-data-grid';
 import {table, tableContainer} from './styles';
 import {ModalDelete} from '../../../../components/ModalDelete/ModalDelete';
 import {useToken} from '../../../../shared/hooks/auth';
+import {useEffect, useState} from 'react';
 
 interface TableGridProps {
   rows: any[];
@@ -16,6 +17,8 @@ interface TableGridProps {
 }
 export function TableGrid(props: TableGridProps) {
   const {User_Access} = useToken();
+  const [match, setMatch] = useState(useMediaQuery('(max-width:480px)'));
+
   const actionColumn: GridColDef[] = [
     {
       field: 'menu',
@@ -46,7 +49,6 @@ export function TableGrid(props: TableGridProps) {
   ];
 
   const columns = [...props.columns, ...actionColumn];
-  const matches = useMediaQuery('(max-width:480px)');
   return (
     <Box sx={tableContainer}>
       <DataGrid
@@ -55,11 +57,12 @@ export function TableGrid(props: TableGridProps) {
         rowsPerPageOptions={[]}
         columns={columns.map((column: GridColDef) => ({
           ...column,
-          ...(!matches
+          width: match ? 150 : column.width,
+          ...(!match
             ? {
                 flex: 1,
               }
-            : {width: 230}),
+            : {}),
           sortable: false,
           headerClassName: 'super-app-theme--header',
         }))}

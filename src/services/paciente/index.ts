@@ -1,4 +1,4 @@
-import {CreateUserProps, UpdateUserProps} from '../../models/paciente';
+import {CreateUserProps, UpdateUserProps} from '../../models/user';
 import {api} from '../api';
 
 export async function createUser(data: CreateUserProps) {
